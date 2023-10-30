@@ -6,8 +6,6 @@ const IndexScreen = ({navigation}) =>{
     const {state, addBlogPost,deleteBlogPost} = useContext(Context)
     return (
         <View>
-            <Button title="Create Post" onPress={()=>navigation.navigate('Create')}/> 
-            <Button title="Add Post" onPress={addBlogPost}/> 
             <FlatList
             data={state}
             keyextractor={(blogPost) =>blogPost.title}
@@ -28,15 +26,15 @@ const IndexScreen = ({navigation}) =>{
     )
 }
 
-IndexScreen.navigationOptions = ({navigation}) => {
+IndexScreen.navigationOptions = ({ navigation }) => {
     return {
-        headerRight: () =>{
-            <TouchableOpacity onPress={()=>navigation.navigate('Create')}>
-                <Feather name="plus" size={30}/>
-            </TouchableOpacity>
-        }
-    }
-}
+      headerRight: () => (
+        <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+          <Feather name="plus" size={30} />
+        </TouchableOpacity>
+      ),
+    };
+  };
 
 const style = StyleSheet.create({
     row:{
